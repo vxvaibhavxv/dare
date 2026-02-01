@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 
+import Card from "./Card/Card";
+
 interface CelebrationsProps {
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -9,43 +11,48 @@ interface CelebrationsProps {
 function Celebrations(props: CelebrationsProps) {
   const { step, setStep } = props;
 
-  const [showConfetti, setShowConfetti] = useState<boolean>(true);
+  const [showCard, setShowCard] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!showConfetti) return;
-
-    const duration = 5 * 1000;
-    const animationEnd = Date.now() + duration;
+    const duration = 1 * 1000;
+    const showCardTime = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
     function randomInRange(min: number, max: number) {
       return Math.random() * (max - min) + min;
     }
 
-    const interval = setInterval(function () {
-      const timeLeft = animationEnd - Date.now();
+    setInterval(function () {
+      const timeElapsed = showCardTime - Date.now();
 
-      if (timeLeft <= 0) {
-        setShowConfetti(false);
-        return clearInterval(interval);
+      if (timeElapsed <= 0) {
+        setShowCard(true);
       }
 
-      const particleCount = 50 * (timeLeft / duration);
+      const particleCount = 50;
 
       confetti({
         ...defaults,
         particleCount,
-        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+        origin: { x: randomInRange(0.1, 0.4), y: Math.random() - 0.2 },
       });
       confetti({
         ...defaults,
         particleCount,
-        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+        origin: { x: randomInRange(0.6, 0.9), y: Math.random() - 0.2 },
       });
-    }, 250);
+    }, 350);
   });
 
-  return <div>Celebrations Component</div>;
+  if (!showCard) {
+    return null;
+  }
+
+  return (
+    <div className="tw:w-full tw:h-full tw:flex tw:items-center tw:justify-center">
+      <Card />
+    </div>
+  );
 }
 
 export default Celebrations;
