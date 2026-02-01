@@ -1,3 +1,6 @@
+import { useRef } from "react";
+import RunAwayButton from "./RunAwayButton/RunAwayButton";
+
 interface ProposalProps {
   step: number;
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -6,8 +9,41 @@ interface ProposalProps {
 function Proposal(props: ProposalProps) {
   const { step, setStep } = props;
 
+  const offsetRef = useRef({ x: 0, y: 0 });
+  const noButtonRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!noButtonRef.current) return;
+
+    const rect = noButtonRef.current.getBoundingClientRect();
+    const buttonCenterX = rect.left + rect.width / 2;
+    const buttonCenterY = rect.top + rect.height / 2;
+
+    const distance = Math.sqrt(
+      Math.pow(e.clientX - buttonCenterX, 2) +
+        Math.pow(e.clientY - buttonCenterY, 2),
+    );
+
+    if (distance < 100) {
+      const angle = Math.atan2(
+        buttonCenterY - e.clientY,
+        buttonCenterX - e.clientX,
+      );
+      offsetRef.current.x = Math.cos(angle) * 50;
+      offsetRef.current.y = Math.sin(angle) * 50;
+    } else {
+      offsetRef.current.x = 0;
+      offsetRef.current.y = 0;
+    }
+
+    noButtonRef.current.style.transform = `translate(${offsetRef.current.x}px, ${offsetRef.current.y}px)`;
+  };
+
   return (
-    <div className="tw:w-full tw:h-full tw:flex tw:items-center tw:justify-center">
+    <div
+      className="tw:w-full tw:h-full tw:flex tw:items-center tw:justify-center"
+      onMouseMove={handleMouseMove}
+    >
       <div className="tw:p-8 tw:bg-card tw:rounded-xl tw:w-150">
         <p className="tw:mb-6 tw:text-text-primary tw:font-bold tw:text-2xl">
           I like spending time with you and I really like what we have. You've
@@ -18,13 +54,11 @@ function Proposal(props: ProposalProps) {
           So, my dear Angry Bird, all baddie energy with a sweet heart, would
           you like to go out on a date with me?
         </p>
-        <div className="tw:flex tw:gap-4">
+        <div className="tw:flex tw:gap-4 tw:relative">
           <div className="tw:cursor-pointer tw:bg-border tw:hover:bg-border-secondary tw:text-white tw:px-4 tw:py-2 tw:rounded-lg tw:flex-1 tw:text-center tw:text-lg tw:font-semibold">
             Yes
           </div>
-          <div className="tw:cursor-pointer tw:bg-border tw:hover:bg-border-secondary tw:text-white tw:px-4 tw:py-2 tw:rounded-lg tw:flex-1 tw:text-center tw:text-lg tw:font-semibold">
-            No
-          </div>
+          <RunAwayButton />
         </div>
       </div>
     </div>
