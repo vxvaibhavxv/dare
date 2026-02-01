@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import "tailwindcss" prefix(tw);
+
+* {
+  font-family: Montserrat;
+}
+
+@theme {
+  --color-bg-start: #fff1f2;
+  --color-bg-end: #ffe4e6;
+
+  --color-card: #ffffff;
+
+  --color-border: #fb7185;
+  --color-border-secondary: #f43f5e;
+
+  --color-danger: #fda4af;
+
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+
+  --color-gold: #fde68a;
+}
