@@ -3,14 +3,7 @@ import confetti from "canvas-confetti";
 
 import Card from "./Card/Card";
 
-interface CelebrationsProps {
-  step: number;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
-}
-
-function Celebrations(props: CelebrationsProps) {
-  const { step, setStep } = props;
-
+function Celebrations() {
   const [showCard, setShowCard] = useState<boolean>(false);
 
   useEffect(() => {
