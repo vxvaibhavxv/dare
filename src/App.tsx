@@ -5,7 +5,7 @@ import Proposal from "./components/Proposal/Proposal";
 import Celebrations from "./components/Celebrations/Celebrations";
 
 function App() {
-  const [step, setStep] = useState<number>(1);
+  const [step, setStep] = useState<number>(2);
 
   return (
     <div className="tw:w-screen tw:h-screen tw:bg-linear-to-r tw:from-bg-start tw:to-bg-end tw:overflow-hidden">

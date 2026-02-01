@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
-import SunFlower from "../../../images/sunflower.png";
 import Sakura from "../../../images/sakura.png";
+import SunFlower from "../../../images/sunflower.png";
 import Bouquet from "../../../images/bouquet-flower.png";
 
 const WIDTH = 450;

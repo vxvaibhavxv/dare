@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import confetti from "canvas-confetti";
 import { AnimatePresence, motion } from "framer-motion";
 
 interface ModalProps {
@@ -8,6 +10,33 @@ interface ModalProps {
 
 function Modal(props: ModalProps) {
   const { show, onClose, title } = props;
+
+  useEffect(() => {
+    if (!show) return;
+
+    const defaults = {
+      spread: 360,
+      ticks: 50,
+      gravity: 0,
+      decay: 0.94,
+      startVelocity: 30,
+      colors: ["FFE400", "FFBD00", "E89400", "FFCA6C", "FDFFB8"],
+    };
+
+    confetti({
+      ...defaults,
+      particleCount: 80,
+      scalar: 1.2,
+      shapes: ["star"],
+    });
+
+    confetti({
+      ...defaults,
+      particleCount: 20,
+      scalar: 0.75,
+      shapes: ["circle"],
+    });
+  }, [show]);
 
   return (
     <AnimatePresence>

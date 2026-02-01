@@ -49,7 +49,7 @@ const data: WarmUpData = [
         feedback: "That sounds dangerous but fun.",
       },
       {
-        text: "Slightly romantic",
+        text: "Slightly romantic and adventurous",
         value: 3,
         feedback: "That's a bold choice. I like it.",
       },
@@ -62,7 +62,7 @@ const data: WarmUpData = [
   },
   {
     question:
-      "Hypothetically, if I asked you to drop one of the following right now, which would it be?",
+      "Hypothetically, if I asked you to drop one of the following right now, which one would it be?",
     options: [
       {
         text: "Eyerolling me (you're a very bad eyeroller)",
@@ -75,7 +75,7 @@ const data: WarmUpData = [
         feedback: "Finally off the plate!",
       },
       {
-        text: "Rubbing it on my face that I'm from Delhi and your intoxicated thoughts about Delhi",
+        text: "Rubbing it on my face that I'm from Delhi and your broken facts about Delhi",
         value: 3,
         feedback:
           "Ladies and gentlemen, we have a winner! Vaibhav for the win! Delhi for the win!",
@@ -86,7 +86,7 @@ const data: WarmUpData = [
         feedback: "You're such a sweetheart!",
       },
       {
-        text: "None of the above, I love all of them equally",
+        text: "None of the above. Don't tell me what to do",
         value: 5,
         feedback: "I knew you'd pick that one!",
       },
