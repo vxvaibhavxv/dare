@@ -1,8 +1,138 @@
 import { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import RunAwayButton from "./RunAwayButton/RunAwayButton";
+import SunFlower from "../../images/sunflower.png";
+
+const FLOWERS = [
+  {
+    src: SunFlower,
+    width: 250,
+    height: 250,
+    top: -250,
+    left: "calc(100vw / 2 - 125px)",
+    topFinal: -125,
+    index: 3,
+  },
+  {
+    src: SunFlower,
+    width: 200,
+    height: 200,
+    top: -200,
+    left: "calc(100vw / 2 - 250px)",
+    topFinal: -100,
+    index: 2,
+  },
+  {
+    src: SunFlower,
+    width: 200,
+    height: 200,
+    top: -200,
+    left: "calc(100vw / 2 + 50px)",
+    topFinal: -100,
+    index: 2,
+  },
+  {
+    src: SunFlower,
+    width: 150,
+    height: 150,
+    top: -150,
+    left: "calc(100vw / 2 - 350px)",
+    topFinal: -75,
+    index: 1,
+  },
+  {
+    src: SunFlower,
+    width: 150,
+    height: 150,
+    top: -150,
+    left: "calc(100vw / 2 + 200px)",
+    topFinal: -75,
+    index: 1,
+  },
+  {
+    src: SunFlower,
+    width: 100,
+    height: 100,
+    top: -100,
+    left: "calc(100vw / 2 - 425px)",
+    topFinal: -50,
+    index: 0,
+  },
+  {
+    src: SunFlower,
+    width: 100,
+    height: 100,
+    top: -100,
+    left: "calc(100vw / 2 + 325px)",
+    topFinal: -50,
+    index: 0,
+  },
+  {
+    src: SunFlower,
+    width: 250,
+    height: 250,
+    top: window.innerHeight,
+    left: "calc(100vw / 2 - 125px)",
+    topFinal: window.innerHeight - 125,
+    index: 3,
+  },
+  {
+    src: SunFlower,
+    width: 200,
+    height: 200,
+    top: window.innerHeight,
+    left: "calc(100vw / 2 - 250px)",
+    topFinal: window.innerHeight - 100,
+    index: 2,
+  },
+  {
+    src: SunFlower,
+    width: 200,
+    height: 200,
+    top: window.innerHeight,
+    left: "calc(100vw / 2 + 50px)",
+    topFinal: window.innerHeight - 100,
+    index: 2,
+  },
+  {
+    src: SunFlower,
+    width: 150,
+    height: 150,
+    top: window.innerHeight,
+    left: "calc(100vw / 2 - 350px)",
+    topFinal: window.innerHeight - 75,
+    index: 1,
+  },
+  {
+    src: SunFlower,
+    width: 150,
+    height: 150,
+    top: window.innerHeight,
+    left: "calc(100vw / 2 + 200px)",
+    topFinal: window.innerHeight - 75,
+    index: 1,
+  },
+  {
+    src: SunFlower,
+    width: 100,
+    height: 100,
+    top: window.innerHeight,
+    left: "calc(100vw / 2 - 425px)",
+    topFinal: window.innerHeight - 50,
+    index: 0,
+  },
+  {
+    src: SunFlower,
+    width: 100,
+    height: 100,
+    top: window.innerHeight,
+    left: "calc(100vw / 2 + 325px)",
+    topFinal: window.innerHeight - 50,
+    index: 0,
+  },
+];
 
 interface ProposalProps {
   step: number;
@@ -13,6 +143,7 @@ function Proposal(props: ProposalProps) {
   const { step, setStep } = props;
 
   const [showCard, setShowCard] = useState<boolean>(false);
+  const [show, setShow] = useState(false);
 
   const handleSuccess = () => {
     setStep(step + 1);
@@ -63,7 +194,7 @@ function Proposal(props: ProposalProps) {
   }
 
   return (
-    <div className="tw:w-full tw:h-full tw:flex tw:items-center tw:justify-center tw:z-5000">
+    <div className="tw:w-full tw:h-full tw:flex tw:items-center tw:justify-center">
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -83,12 +214,60 @@ function Proposal(props: ProposalProps) {
           <div
             className="tw:cursor-pointer tw:bg-border tw:hover:bg-border-secondary tw:text-white tw:px-4 tw:py-2 tw:rounded-lg tw:flex-1 tw:text-center tw:text-lg tw:font-semibold"
             onClick={handleSuccess}
+            onMouseEnter={() => setShow(true)}
+            onMouseLeave={() => setShow(false)}
           >
             Yes
           </div>
           <RunAwayButton />
         </div>
       </motion.div>
+      {
+        <div className="tw:w-full tw:h-full tw:absolute tw:top-0 tw:left-0">
+          <AnimatePresence>
+            {show &&
+              FLOWERS.map((flower) => (
+                <motion.img
+                  src={flower.src}
+                  style={{
+                    width: flower.width,
+                    height: flower.height,
+                    position: "absolute",
+                    zIndex: flower.index,
+                  }}
+                  initial={{
+                    y: flower.top,
+                    x: flower.left,
+                  }}
+                  exit={{
+                    y: flower.top,
+                  }}
+                  animate={{
+                    rotate: 360,
+                    y: flower.topFinal,
+                    scale: [1, 1.25, 1],
+                  }}
+                  transition={{
+                    rotate: {
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "linear",
+                    },
+                    y: {
+                      duration: 0.5,
+                      ease: "easeInOut",
+                    },
+                    scale: {
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    },
+                  }}
+                />
+              ))}
+          </AnimatePresence>
+        </div>
+      }
     </div>
   );
 }

@@ -6,6 +6,10 @@
   font-family: Montserrat;
 }
 
+body {
+  overflow: hidden;
+}
+
 @theme {
   --color-bg-start: #fff1f2;
   --color-bg-end: #ffe4e6;
