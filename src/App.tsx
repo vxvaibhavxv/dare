@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import WarmUp from "./components/WarmUp/WarmUp";
 import Proposal from "./components/Proposal/Proposal";
+import Celebrations from "./components/Celebrations/Celebrations";
 
 function App() {
   const [step, setStep] = useState<number>(1);
@@ -10,6 +11,7 @@ function App() {
     <div className="tw:w-screen tw:h-screen tw:bg-linear-to-r tw:from-bg-start tw:to-bg-end tw:overflow-hidden">
       {step === 0 && <WarmUp step={step} setStep={setStep} />}
       {step === 1 && <Proposal step={step} setStep={setStep} />}
+      {step === 2 && <Celebrations step={step} setStep={setStep} />}
     </div>
   );
 }
