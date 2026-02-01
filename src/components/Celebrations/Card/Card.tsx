@@ -42,7 +42,7 @@ const FLOWERS = [
     index: 3,
   },
   {
-    src: Sakura,
+    src: SunFlower,
     width: 200,
     height: 200,
     top: HEIGHT - 100,
@@ -50,7 +50,7 @@ const FLOWERS = [
     index: 1,
   },
   {
-    src: SunFlower,
+    src: Sakura,
     width: 150,
     height: 150,
     top: HEIGHT - 175,
@@ -58,7 +58,7 @@ const FLOWERS = [
     index: 2,
   },
   {
-    src: SunFlower,
+    src: Sakura,
     width: 150,
     height: 150,
     top: HEIGHT - 75,
@@ -66,7 +66,7 @@ const FLOWERS = [
     index: 2,
   },
   {
-    src: Sakura,
+    src: SunFlower,
     width: 100,
     height: 100,
     top: HEIGHT - 225,
@@ -148,7 +148,7 @@ function Card() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          Anyways, sending you some virtual blooms. See you soon!
+          Sending you some virtual blooms. I'll see you soon angry bird!
         </motion.p>
       </motion.div>
     </div>

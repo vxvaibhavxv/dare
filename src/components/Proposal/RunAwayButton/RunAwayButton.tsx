@@ -3,21 +3,20 @@ import { motion, useMotionValue, useSpring, animate } from "framer-motion";
 
 const teasingTexts = [
   "No",
-  "Nope 😌",
+  "Nope",
   "Still no?",
   "Try again",
   "Nice try",
   "Almost there",
   "Haha, not yet",
   "Keep trying",
-  "Getting warmer 😏",
   "So close!",
   "Think harder",
   "Are you sure?",
-  "Not happening 😈",
+  "Not happening",
+  "Really?",
   "Bold attempt",
   "Try harder",
-  "Catch me!",
 ];
 
 function RunAwayButton() {
@@ -68,7 +67,7 @@ function RunAwayButton() {
             setText(randomText);
 
             teasingTimeout.current = null;
-          }, 2000);
+          }, 1000);
         }
       }
 

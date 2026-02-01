@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import RunAwayButton from "./RunAwayButton/RunAwayButton";
 import SunFlower from "../../images/sunflower.png";
+import Lily from "../../images/lily.png";
 
 const FLOWERS = [
   {
@@ -201,14 +202,20 @@ function Proposal(props: ProposalProps) {
         transition={{ type: "spring", stiffness: 120, damping: 12 }}
         className="tw:p-8 tw:bg-card tw:rounded-xl tw:w-150 tw:z-50"
       >
-        <p className="tw:mb-6 tw:text-text-primary tw:font-bold tw:text-2xl">
-          I like spending time with you and I really like what we have. You've
-          quietly become someone I really look forward to seeing. And, it's time
-          I ask you out properly.
+        <div className="tw:flex tw:items-center tw:justify-between tw:gap-6 tw:mb-3">
+          <p className="tw:text-text-primary tw:font-bold tw:text-xl">
+            I really enjoy spending time with you, and I genuinely like what we
+            have. You've quietly become someone I look forward to seeing and
+            talking to.
+          </p>
+          <img src={Lily} className="tw:w-40" />
+        </div>
+        <p className="tw:mb-3 tw:text-text-primary tw:font-bold tw:text-xl">
+          So, I think it's time I ask you this properly.
         </p>
-        <p className="tw:mb-6 tw:text-text-primary tw:font-bold tw:text-2xl">
-          So, my dear Angry Bird, all baddie energy with a sweet heart, would
-          you like to go out on a date with me?
+        <p className="tw:mb-6 tw:text-text-primary tw:font-bold tw:text-xl">
+          My dear Angry Bird, all baddie energy with a sweet heart, would you
+          like to go out on a date with me?
         </p>
         <div className="tw:flex tw:gap-4 tw:relative">
           <div
@@ -245,7 +252,6 @@ function Proposal(props: ProposalProps) {
                   animate={{
                     rotate: 360,
                     y: flower.topFinal,
-                    scale: [1, 1.25, 1],
                   }}
                   transition={{
                     rotate: {
@@ -256,11 +262,6 @@ function Proposal(props: ProposalProps) {
                     y: {
                       duration: 0.5,
                       ease: "easeInOut",
-                    },
-                    scale: {
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "linear",
                     },
                   }}
                 />
