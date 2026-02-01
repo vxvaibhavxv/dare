@@ -125,7 +125,14 @@ const data: WarmUpData = [
   },
 ];
 
-function WarmUp() {
+interface WarmUpProps {
+  step: number;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+}
+
+function WarmUp(props: WarmUpProps) {
+  const { step, setStep } = props;
+
   const [responses, setResponses] = useState<number[]>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalFeedback, setModalFeedback] = useState<string>("");
@@ -139,7 +146,12 @@ function WarmUp() {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    setCurrentSlideIndex(currentSlideIndex + 1);
+
+    if (currentSlideIndex + 1 === data.length) {
+      setStep(step + 1);
+    } else {
+      setCurrentSlideIndex(currentSlideIndex + 1);
+    }
   };
 
   return (
