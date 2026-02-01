@@ -1,12 +1,12 @@
 import type { WarmUpQuestionOption } from "../../WarmUp.types";
 
-interface WarmUpSlideProps {
+interface SlideProps {
   question: string;
   options: Array<WarmUpQuestionOption>;
   onClick?: (value: WarmUpQuestionOption) => void;
 }
 
-function WarmUpSlide(props: WarmUpSlideProps) {
+function Slide(props: SlideProps) {
   const { question, options, onClick } = props;
   return (
     <div className="tw:p-8 tw:bg-card tw:rounded-xl tw:w-150">
@@ -29,4 +29,4 @@ function WarmUpSlide(props: WarmUpSlideProps) {
   );
 }
 
-export default WarmUpSlide;
+export default Slide;

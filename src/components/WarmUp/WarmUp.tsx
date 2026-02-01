@@ -1,8 +1,13 @@
 import { useState } from "react";
-import WarmUpSlide from "./components/WarmUpSlide/WarmUpSlide";
-import type { WarmUpData } from "./WarmUp.types";
-import type { WarmUpQuestionOption } from "./WarmUp.types";
-import type { WarmUpQuestion } from "./WarmUp.types";
+
+import Slide from "./components/Slide/Slide";
+import Modal from "./components/Modal/Modal";
+
+import type {
+  WarmUpData,
+  WarmUpQuestionOption,
+  WarmUpQuestion,
+} from "./WarmUp.types";
 
 const data: WarmUpData = [
   {
@@ -122,13 +127,19 @@ const data: WarmUpData = [
 
 function WarmUp() {
   const [responses, setResponses] = useState<number[]>([]);
-  const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [modalFeedback, setModalFeedback] = useState<string>("");
+  const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
 
   const handleOptionClick = (value: WarmUpQuestionOption) => {
     setResponses([...responses, value.value]);
+    setModalFeedback(value.feedback);
     setShowModal(true);
-    // setCurrentSlideIndex(currentSlideIndex + 1);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setCurrentSlideIndex(currentSlideIndex + 1);
   };
 
   return (
@@ -137,12 +148,19 @@ function WarmUp() {
         if (index !== currentSlideIndex) return null;
 
         return (
-          <WarmUpSlide
-            key={slide.question}
-            question={slide.question}
-            options={slide.options}
-            onClick={handleOptionClick}
-          />
+          <>
+            <Slide
+              key={slide.question}
+              question={slide.question}
+              options={slide.options}
+              onClick={handleOptionClick}
+            />
+            <Modal
+              show={showModal}
+              onClose={handleCloseModal}
+              title={modalFeedback}
+            />
+          </>
         );
       })}
     </div>
