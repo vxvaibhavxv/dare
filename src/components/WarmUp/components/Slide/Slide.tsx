@@ -17,7 +17,7 @@ function Slide(props: SlideProps) {
         <div className="tw:grid tw:grid-cols-2 tw:gap-4">
           {options.map((option) => (
             <div
-              className="tw:w-full tw:border-2 tw:rounded-xl tw:border-border tw:py-2 tw:px-4 tw:cursor-pointer tw:hover:bg-radial tw:hover:from-bg-start tw:hover:to-bg-end"
+              className="tw:w-full tw:border-2 tw:rounded-xl tw:border-border tw:py-2 tw:px-4 tw:cursor-pointer tw:hover:bg-radial tw:flex tw:items-center tw:hover:from-bg-start tw:hover:to-bg-end"
               onClick={() => onClick?.(option)}
             >
               <p className="tw:text-text-primary tw:text-base">{option.text}</p>
