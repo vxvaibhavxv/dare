@@ -5,8 +5,12 @@ import Proposal from "./components/Proposal/Proposal";
 import PreProposal from "./components/PreProposal/PreProposal";
 import Celebrations from "./components/Celebrations/Celebrations";
 
+import useImagePreloader from "./hooks/useImagePreLoader";
+
 function App() {
   const [step, setStep] = useState<number>(1);
+
+  useImagePreloader();
 
   return (
     <div className="tw:w-screen tw:h-screen tw:bg-linear-to-r tw:from-bg-start tw:to-bg-end tw:overflow-hidden">
