@@ -219,7 +219,7 @@ function Proposal(props: ProposalProps) {
         </p>
         <div className="tw:flex tw:gap-4 tw:relative">
           <div
-            className="tw:cursor-pointer tw:bg-border tw:hover:bg-border-secondary tw:text-white tw:px-4 tw:py-2 tw:rounded-lg tw:flex-1 tw:text-center tw:text-lg tw:font-semibold"
+            className="tw:cursor-pointer tw:bg-love tw:hover:bg-love-hover tw:text-white tw:px-4 tw:py-2 tw:rounded-lg tw:flex-1 tw:text-center tw:text-lg tw:font-semibold"
             onClick={handleSuccess}
             onMouseEnter={() => setShow(true)}
             onMouseLeave={() => setShow(false)}
