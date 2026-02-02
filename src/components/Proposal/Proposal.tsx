@@ -200,13 +200,13 @@ function Proposal(props: ProposalProps) {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: "spring", stiffness: 120, damping: 12 }}
-        className="tw:p-8 tw:bg-card tw:rounded-xl tw:w-150 tw:z-50"
+        className="tw:p-8 tw:bg-card tw:rounded-xl tw:w-150 tw:z-50 tw:shadow-md"
       >
         <div className="tw:flex tw:items-center tw:justify-between tw:gap-6 tw:mb-3">
           <p className="tw:text-text-primary tw:font-bold tw:text-xl">
             I really enjoy spending time with you, and I genuinely like what we
             have. You've quietly become someone I look forward to seeing and
-            talking to.
+            talking to everyday.
           </p>
           <img src={Lily} className="tw:w-40" />
         </div>

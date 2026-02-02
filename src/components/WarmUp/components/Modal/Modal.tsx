@@ -53,7 +53,7 @@ function Modal(props: ModalProps) {
             animate={{ scale: 1, rotate: "0deg" }}
             exit={{ scale: 0, rotate: "0deg" }}
             onClick={(e) => e.stopPropagation()}
-            className="tw:bg-linear-to-br tw:from-bg-start tw:to-bg-end tw:text-white tw:p-6 tw:rounded-lg tw:w-full tw:max-w-lg tw:shadow-xl tw:cursor-default tw:relative tw:overflow-hidden"
+            className="tw:bg-linear-to-br tw:from-bg-start tw:to-bg-end tw:text-white tw:p-6 tw:rounded-lg tw:w-full tw:max-w-[350px] tw:shadow-xl tw:cursor-default tw:relative tw:overflow-hidden"
           >
             <p className="tw:text-text-primary tw:text-base tw:font-semibold">
               {title}

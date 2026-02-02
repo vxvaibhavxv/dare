@@ -8,8 +8,9 @@ interface SlideProps {
 
 function Slide(props: SlideProps) {
   const { question, options, onClick } = props;
+
   return (
-    <div className="tw:p-8 tw:bg-card tw:rounded-xl tw:w-150">
+    <div className="tw:p-8 tw:bg-card tw:rounded-xl tw:w-150 tw:shadow-md">
       <p className="tw:mb-6 tw:text-text-primary tw:font-bold tw:text-2xl">
         {question}
       </p>

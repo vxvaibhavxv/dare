@@ -27,7 +27,7 @@ function PreProposal(props: PreProposalProps) {
           stiffness: 120,
           damping: 12,
         }}
-        className="tw:p-8 tw:bg-card tw:rounded-xl tw:w-150 tw:z-50 tw:flex tw:items-center tw:justify-between tw:gap-6"
+        className="tw:p-8 tw:bg-card tw:rounded-xl tw:w-150 tw:z-50 tw:flex tw:items-center tw:justify-between tw:gap-6 tw:shadow-md"
       >
         <div>
           <p className="tw:text-text-primary tw:font-bold tw:text-lg">
